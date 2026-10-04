@@ -1,0 +1,24 @@
+.env
+.env.*
+!.env.example
+token.json
+token*.json
+client_secret.json
+client_secret*.json
+!client_secret.example.json
+credentials.json
+credentials*.json
+*.pem
+*.key
+.streamlit/secrets.toml
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+# 執行時產生的檔案不納入公開 repo，僅保留以下虛構範例。
+mock_storage/nas/**
+!mock_storage/nas/**/
+!mock_storage/nas/技術文件/系統測試/20260101_技術文件_NAS示範測試紀錄_v1.0.txt
+!mock_storage/nas/生產設備部/標準作業程序/異常處理/20260101_SOP_設備異常處理示範_v1.0.txt
