@@ -1,6 +1,6 @@
 # Portal-POC_demo｜混合雲企業檔案門戶
 
-以 Python 與 Streamlit 實作的企業檔案管理概念驗證，整合 Google Drive、模擬 NAS 與 Gemini AI。此 repo 是經過敏感資訊清理的作品展示版本，內附文件均為虛構示範資料。
+以 Python 與 Streamlit 實作的企業檔案管理概念驗證，整合 Google Drive、模擬 NAS 與 Gemini AI。此 repo 為作品集展示版本，內附文件均為虛構示範資料；Google Drive 與 AI 功能需使用自己的測試設定。
 
 ## 主要功能
 
@@ -24,7 +24,7 @@ python -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
-不設定金鑰也能瀏覽示範檔案並使用一般搜尋。側邊欄提供「請輸入您的 API key」欄位；輸入自己的 Gemini API key 後，才會啟用 AI 功能。金鑰欄位使用密碼顯示，程式不將其寫入 repo。
+不設定金鑰也能瀏覽示範檔案並使用一般搜尋。側邊欄提供「請輸入您的 API key」欄位；輸入自己的 Gemini API key 後，才會啟用 AI 功能。金鑰欄位以密碼形式顯示，供本機執行時輸入自己的金鑰；密碼遮罩只影響畫面顯示，不提供訪客身分驗證。
 
 也可複製 `.env.example` 為 `.env`，填入自己的設定：
 
@@ -53,7 +53,7 @@ app.py                       Streamlit 介面與四個功能頁籤
 config.py                    本機環境設定
 storage.py                   模擬 NAS 歸檔路徑檢查
 test_drive.py                本機 OAuth 授權與選用上傳測試
-requirements.txt             已驗證的直接依賴版本
+requirements.txt             固定版本的直接依賴清單
 .env.example                 環境設定範例
 client_secret.example.json   OAuth 憑證結構範例
 mock_storage/nas/            虛構示範文件
@@ -67,6 +67,8 @@ mock_storage/nas/            虛構示範文件
 - Drive 清單目前最多列出指定資料夾內 50 個檔案，未遞迴或分頁。
 - AI 功能會將相關檔名、路徑、問題或文件摘要傳送到 Google Gemini；請使用可供示範的資料。實際 API 請求依自己的帳號額度與計費規則執行。
 - 此版本供本機概念驗證，尚未具備正式系統的登入、角色權限、稽核、惡意上傳防護或多使用者隔離。
+- 若對外部署，NAS 目錄與 Drive OAuth 授權使用的是伺服器端設定，並非每位訪客獨立的儲存空間或帳號；不要連接含真實企業／個人資料的儲存庫。
+- 對外展示時不要在伺服器的 `GEMINI_API_KEY` 預填私用金鑰：程式會將其設為側邊欄輸入欄位的預設值，密碼遮罩不能作為保密措施。
 
 ## 公開版資料處理
 
